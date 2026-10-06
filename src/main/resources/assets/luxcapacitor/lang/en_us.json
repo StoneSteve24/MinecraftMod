@@ -1,0 +1,16 @@
+{
+  "itemGroup.luxcapacitor": "Lux Capacitor",
+  "block.luxcapacitor.example_block": "Example Block",
+  "item.luxcapacitor.example_item": "Example Item",
+  "item.luxcapacitor.simple_prism": "Simple Prism",
+
+
+
+  "luxcapacitor.configuration.title": "Lux Capacitor Mod Configs",
+  "luxcapacitor.configuration.section.luxcapacitor.common.toml": "Lux Capacitor Mod Configs",
+  "luxcapacitor.configuration.section.luxcapacitor.common.toml.title": "Lux Capacitor Mod Configs",
+  "luxcapacitor.configuration.items": "Item List",
+  "luxcapacitor.configuration.logDirtBlock": "Log Dirt Block",
+  "luxcapacitor.configuration.magicNumberIntroduction": "Magic Number Text",
+  "luxcapacitor.configuration.magicNumber": "Magic Number"
+}
