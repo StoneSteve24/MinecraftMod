@@ -1,5 +1,6 @@
 package com.stonesteve24.luxcapacitor;
 
+import net.minecraft.world.level.block.SoundType;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -53,7 +54,13 @@ public class LuxCapacitor {
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
+    // My main items start here
     public static final DeferredItem<Item> PRISM = ITEMS.registerSimpleItem("simple_prism");
+    public static final DeferredItem<Item> RAW_LUMEN = ITEMS.registerSimpleItem("raw_lumen");
+
+    public static final DeferredBlock<Block> LUMEN_ORE = BLOCKS.registerSimpleBlock("lumen_ore",
+            BlockBehaviour.Properties.of().strength(3.0f, 3.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+    public static final DeferredItem<BlockItem> LUMEN_ORE_ITEM = ITEMS.registerSimpleBlockItem("lumen_ore", LUMEN_ORE);
 
     // Creates a creative tab with the id "luxcapacitor:lux_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> LUX_TAB = CREATIVE_MODE_TABS.register("lux_tab", () -> CreativeModeTab.builder()
@@ -63,6 +70,8 @@ public class LuxCapacitor {
             .displayItems((parameters, output) -> {
                 output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
                 output.accept(PRISM.get());
+                output.accept(RAW_LUMEN.get());
+                output.accept(LUMEN_ORE_ITEM.get());
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
