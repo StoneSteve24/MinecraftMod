@@ -1,7 +1,9 @@
 package com.stonesteve24.luxcapacitor;
 
+import com.stonesteve24.luxcapacitor.registry.ModBlockEntities;
 import com.stonesteve24.luxcapacitor.registry.ModBlocks;
 import com.stonesteve24.luxcapacitor.registry.ModItems;
+import com.stonesteve24.luxcapacitor.registry.ModMenus;
 import net.minecraft.world.level.block.SoundType;
 import org.slf4j.Logger;
 
@@ -76,6 +78,8 @@ public class LuxCapacitor {
         ITEMS.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenus.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 

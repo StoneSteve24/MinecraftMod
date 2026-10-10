@@ -1,5 +1,7 @@
 package com.stonesteve24.luxcapacitor;
 
+import com.stonesteve24.luxcapacitor.menus.*;
+import com.stonesteve24.luxcapacitor.registry.ModMenus;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -7,6 +9,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -27,5 +30,14 @@ public class ExampleModClient {
         // Some client setup code
         LuxCapacitor.LOGGER.info("HELLO FROM CLIENT SETUP");
         LuxCapacitor.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+    }
+
+    @SubscribeEvent
+    public static void registerScreens(RegisterMenuScreensEvent event)
+    {
+        event.register(
+                ModMenus.SOLAR_HARVESTER_MENU.get(),
+                SolarHarvesterScreen::new
+        );
     }
 }

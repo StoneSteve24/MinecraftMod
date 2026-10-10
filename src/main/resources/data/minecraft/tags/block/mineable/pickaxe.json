@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "luxcapacitor:lumen_ore"
+    "luxcapacitor:lumen_ore",
+    "luxcapacitor:solar_harvester"
   ]
 }
