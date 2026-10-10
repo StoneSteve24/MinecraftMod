@@ -18,11 +18,15 @@ public class LuxStorage
         stored = 0;
     }
 
-    //Getters
+    // Getters
 
     public int getStored() { return stored; }
     public int getCapacity() { return capacity; }
     public LuxShade getShade() { return currentShade; }
+
+    //Setters
+    public void setStored(int var) { stored = var; }
+    public void setShade(LuxShade var) { currentShade = var; }
 
     // Main
 

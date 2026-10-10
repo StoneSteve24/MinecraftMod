@@ -81,7 +81,7 @@ public class SolarHarvesterScreen
         );
 
         graphics.drawString(
-                font, "Energy Type: Lux", 10, 25, 0xFFFFFF
+                font, "Lux Shade: " + menu.getShadeString(), 10, 25, 0xFFFFFF
         );
 
         graphics.drawString(

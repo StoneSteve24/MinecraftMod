@@ -15,6 +15,7 @@ public class SolarHarvesterMenu extends AbstractContainerMenu
 {
     private final SolarHarvesterEntity blockEntity;
     private final DataSlot storedLux = DataSlot.standalone();
+    private final DataSlot luxShade = DataSlot.standalone();
 
     public SolarHarvesterMenu(
             int containerId,
@@ -25,6 +26,8 @@ public class SolarHarvesterMenu extends AbstractContainerMenu
         this.blockEntity = blockEntity;
         addDataSlot(storedLux);
         storedLux.set(blockEntity.getStoredLux());
+        addDataSlot(luxShade);
+        luxShade.set(blockEntity.getShade().ordinal());
     }
 
     public SolarHarvesterMenu(
@@ -56,11 +59,11 @@ public class SolarHarvesterMenu extends AbstractContainerMenu
     {
         return storedLux.get();
     }
-
     public int getLuxCapacity()
     {
         return blockEntity.getLuxCapacity();
     }
+    public String getShadeString() { return String.valueOf(luxShade.get()); }
 
     @Override
     public ItemStack quickMoveStack(Player player, int i) {
