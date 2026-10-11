@@ -31,8 +31,7 @@
               "title": "Welcome"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -52,7 +51,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -194,7 +195,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "c284de4d07b5666f",
+  "active": "f24851551e00441a",
   "lastOpenFiles": [
     "Welcome.md",
     "create a link.md"
