@@ -79,7 +79,7 @@ public class SolarHarvesterEntity extends BlockEntity
         try {
             luxStorage.setShade(LuxShade.valueOf(shadeName));
         } catch (IllegalArgumentException e) {
-            //luxStorage.setShade(LuxShade.BLANK);
+            luxStorage.setShade(LuxShade.BLANK);
         }
     }
 }
