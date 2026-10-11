@@ -3,7 +3,6 @@ package com.stonesteve24.luxcapacitor.blocks;
 import com.stonesteve24.luxcapacitor.lux.LuxShade;
 import com.stonesteve24.luxcapacitor.lux.LuxStorage;
 import com.stonesteve24.luxcapacitor.registry.ModBlockEntities;
-import com.stonesteve24.luxcapacitor.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -81,5 +80,13 @@ public class SolarHarvesterEntity extends BlockEntity
         } catch (IllegalArgumentException e) {
             luxStorage.setShade(LuxShade.BLANK);
         }
+    }
+
+    // Button resolvers
+
+    public void flushLux()
+    {
+        luxStorage.removeLux(luxStorage.getCapacity());
+        luxStorage.setShade(LuxShade.BLANK);
     }
 }

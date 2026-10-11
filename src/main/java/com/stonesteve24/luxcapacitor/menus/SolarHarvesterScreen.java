@@ -1,6 +1,8 @@
 package com.stonesteve24.luxcapacitor.menus;
 
+import com.stonesteve24.luxcapacitor.lux.LuxAPI;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -66,7 +68,7 @@ public class SolarHarvesterScreen
         graphics.fill(
                 barX, barY,
                 barX + filledWidth, barY + barHeight,
-                0xFFFFD54F
+                LuxAPI.GetShadeHex(menu.getShadeInt()).getRGB()
         );
     }
 
@@ -81,7 +83,9 @@ public class SolarHarvesterScreen
         );
 
         graphics.drawString(
-                font, "Lux Shade: " + menu.getShadeString(), 10, 25, 0xFFFFFF
+                font,
+                "Lux Shade: " + LuxAPI.GetShadeString(menu.getShadeInt()),
+                10, 25, 0xFFFFFF
         );
 
         graphics.drawString(
@@ -107,5 +111,38 @@ public class SolarHarvesterScreen
         renderBackground(graphics, mouseX, mouseY, partialTick);
         super.render(graphics, mouseX, mouseY, partialTick);
         renderTooltip(graphics, mouseX, mouseY);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        int x = leftPos;
+        int y = topPos;
+
+        this.addRenderableWidget(
+                Button.builder(
+                                Component.literal("Flush Lux"),
+                                button -> {
+                                    if (this.minecraft.gameMode != null) {
+                                        this.minecraft.gameMode.handleInventoryButtonClick(
+                                                this.menu.containerId,
+                                                0
+                                        );
+                                    }
+                                }
+                        )
+                        .bounds(x+9, y+73, 60, 20)
+                        .build()
+        );
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        boolean result = super.mouseClicked(mouseX, mouseY, button);
+
+        this.setFocused(null);
+
+        return result;
     }
 }

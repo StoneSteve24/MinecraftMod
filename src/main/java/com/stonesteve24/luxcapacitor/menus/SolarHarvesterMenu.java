@@ -4,6 +4,7 @@ import com.stonesteve24.luxcapacitor.blocks.SolarHarvesterEntity;
 import com.stonesteve24.luxcapacitor.registry.ModMenus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -63,7 +64,7 @@ public class SolarHarvesterMenu extends AbstractContainerMenu
     {
         return blockEntity.getLuxCapacity();
     }
-    public String getShadeString() { return String.valueOf(luxShade.get()); }
+    public int getShadeInt() { return luxShade.get(); }
 
     @Override
     public ItemStack quickMoveStack(Player player, int i) {
@@ -82,6 +83,27 @@ public class SolarHarvesterMenu extends AbstractContainerMenu
     public void broadcastChanges()
     {
         storedLux.set(blockEntity.getStoredLux());
+        luxShade.set(blockEntity.getShade().ordinal());
         super.broadcastChanges();
+    }
+
+    @Override
+    public boolean clickMenuButton(Player player, int buttonId) {
+        //if (buttonId != 0) { return false; }
+        if (!(player instanceof ServerPlayer)) {
+            return false;
+        }
+        // Handle button clicks on the server side
+
+        switch (buttonId)
+        {
+            case 0:
+                blockEntity.flushLux();
+                break;
+            default:
+                return false;
+        }
+
+        return true;
     }
 }
