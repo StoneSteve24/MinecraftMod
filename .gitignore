@@ -38,3 +38,7 @@ run/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
+
+### Obsidian Layout ###
+
+.Obsidian_Vault/Lux_Capacitor/.obsidian/workspace.json
