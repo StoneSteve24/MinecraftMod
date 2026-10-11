@@ -50,8 +50,8 @@ public class SolarHarvesterEntity extends BlockEntity
             blockEntity.luxStorage.addLux(LuxShade.WHITE, 50);
         }
 
-        System.out.println(blockEntity.luxStorage.getStored());
-        System.out.println(blockEntity.luxStorage.getShade().name());
+        //System.out.println(blockEntity.luxStorage.getStored());
+        //System.out.println(blockEntity.luxStorage.getShade().name());
     }
 
     @Override
