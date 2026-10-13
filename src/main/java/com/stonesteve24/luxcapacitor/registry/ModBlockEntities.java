@@ -1,6 +1,8 @@
 package com.stonesteve24.luxcapacitor.registry;
 
 import com.stonesteve24.luxcapacitor.LuxCapacitor;
+import com.stonesteve24.luxcapacitor.blocks.BasicLuxStorage;
+import com.stonesteve24.luxcapacitor.blocks.BasicLuxStorageEntity;
 import com.stonesteve24.luxcapacitor.blocks.SolarHarvester;
 import com.stonesteve24.luxcapacitor.blocks.SolarHarvesterEntity;
 import net.minecraft.core.registries.Registries;
@@ -26,6 +28,7 @@ public class ModBlockEntities
     public static final DeferredRegister.Blocks MOD_BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items MOD_BLOCK_ITEMS = DeferredRegister.createItems(MODID);
 
+    // Solar Harvester
     public static final DeferredBlock<Block> SOLAR_HARVESTER = MOD_BLOCKS.registerBlock("solar_harvester",
             SolarHarvester::new,
             BlockBehaviour.Properties.of()
@@ -42,6 +45,22 @@ public class ModBlockEntities
     );
     public static final DeferredItem<BlockItem> SOLAR_HARVESTER_ITEM = MOD_BLOCK_ITEMS.registerSimpleBlockItem("solar_harvester", SOLAR_HARVESTER);
 
+    // Basic Storage
+    public static final DeferredBlock<Block> BASIC_LUX_STORAGE = MOD_BLOCKS.registerBlock("basic_lux_storage",
+            BasicLuxStorage::new,
+            BlockBehaviour.Properties.of()
+                    .strength(1.0f, 3.0f)
+                    .sound(SoundType.METAL));
+    public static final Supplier<BlockEntityType<BasicLuxStorageEntity>> BASIC_LUX_STORAGE_ENTITY = MOD_BLOCK_ENTITIES.register
+            (
+                    "basic_lux_storage",
+                    () -> BlockEntityType.Builder.of
+                            (
+                                    BasicLuxStorageEntity::new,
+                                    BASIC_LUX_STORAGE.get()
+                            ).build(null)
+            );
+    public static final DeferredItem<BlockItem> BASIC_LUX_STORAGE_ITEM = MOD_BLOCK_ITEMS.registerSimpleBlockItem("basic_lux_storage", BASIC_LUX_STORAGE);
 
     // FUNCTIONS
     public static void register(IEventBus modEventBus) {
@@ -57,6 +76,7 @@ public class ModBlockEntities
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == LUX_TAB.getKey()) {
             event.accept(SOLAR_HARVESTER_ITEM);
+            event.accept(BASIC_LUX_STORAGE_ITEM);
         }
     }
 }

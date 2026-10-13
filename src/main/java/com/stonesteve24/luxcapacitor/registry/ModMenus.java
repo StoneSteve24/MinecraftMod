@@ -19,6 +19,11 @@ public class ModMenus
             "solar_harvester",
             () -> IMenuTypeExtension.create(SolarHarvesterMenu::new)
     );
+    public static final Supplier<MenuType<BasicLuxStorageMenu>>
+            BASIC_LUX_STORAGE_MENU = MENUS.register(
+            "basic_lux_storage",
+            () -> IMenuTypeExtension.create(BasicLuxStorageMenu::new)
+    );
 
     public static void register(IEventBus modEventBus)
     {

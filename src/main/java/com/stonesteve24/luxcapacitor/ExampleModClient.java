@@ -39,5 +39,9 @@ public class ExampleModClient {
                 ModMenus.SOLAR_HARVESTER_MENU.get(),
                 SolarHarvesterScreen::new
         );
+        event.register(
+                ModMenus.BASIC_LUX_STORAGE_MENU.get(),
+                BasicLuxStorageScreen::new
+        );
     }
 }
