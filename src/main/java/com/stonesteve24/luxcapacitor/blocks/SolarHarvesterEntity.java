@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SolarHarvesterEntity extends BlockEntity
 {
-    private final LuxStorage luxStorage = new LuxStorage(10000);
+    private final LuxStorage luxStorage = new LuxStorage(10000, false);
     private boolean canSeeSun = false;
     private int skyCheckTimer = 0;
 

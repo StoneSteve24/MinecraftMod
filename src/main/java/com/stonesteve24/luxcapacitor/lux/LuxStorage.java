@@ -3,17 +3,19 @@ package com.stonesteve24.luxcapacitor.lux;
 public class LuxStorage
 {
     private final int capacity;
+    private final boolean isConsumer;
 
     private int stored;
     private LuxShade currentShade;
 
     /** Construct a Lux Storage component with the specified capacity */
-    public LuxStorage(int capacity)
+    public LuxStorage(int capacity, boolean isConsumer)
     {
         // Failsafe. Do not initialize with negative storage
         if (capacity < 0) { throw new IllegalArgumentException("Lux storage capacity cannot be a negative value"); }
 
         this.capacity = capacity;
+        this.isConsumer = isConsumer;
         currentShade = LuxShade.BLANK;
         stored = 0;
     }
@@ -22,6 +24,7 @@ public class LuxStorage
 
     public int getStored() { return stored; }
     public int getCapacity() { return capacity; }
+    public boolean isConsumer() { return isConsumer; }
     public LuxShade getShade() { return currentShade; }
 
     //Setters
